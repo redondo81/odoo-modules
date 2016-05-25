@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+
+        <record id="seq_tmp_stock_picking_type_in" model="ir.sequence">
+            <field name="name">seq_temporany_stock_in</field>
+            <field name="prefix">MRP/IN</field>
+        </record>
+
+        <record id="tmp_stock_picking_type" model="stock.picking.type">
+            <field name="name">Movimentazione Magazzino Temporaneo</field>
+            <field name="code">Movimentazione Magazzino Temporaneo</field>
+            <field eval="seq_tmp_stock_picking_type_in" name="sequence_id"/>
+            <field name="code">internal</field>
+        </record>
+
+        <record id="seq_tmp_stock_picking_type_out" model="ir.sequence">
+            <field name="name">seq_temporany_stock_out</field>
+            <field name="prefix">MRP/OUT</field>
+        </record>
+
+        <record id="tmp_stock_picking_type_out" model="stock.picking.type">
+            <field name="name">Movimentazione Magazzino Temporaneo Rientro</field>
+            <field name="code">Movimentazione Magazzino Temporaneo Rientro</field>
+            <field eval="seq_tmp_stock_picking_type_out" name="sequence_id"/>
+            <field name="code">internal</field>
+        </record>
+
+    </data>
+</openerp>

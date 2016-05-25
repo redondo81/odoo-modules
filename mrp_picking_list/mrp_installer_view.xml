@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+    	<record model="ir.ui.view" id="mrp_installer_view_idi">
+            <field name="name">mrp.installer.view.idi</field>
+            <field name="model">mrp.installer</field>
+            <field name="arch" type="xml">
+                <form string="Mrp configuration">
+                    <group>
+                        <field name="location_src_id"/>
+				        <field name="location_tmp_id"/>
+                    </group>
+                    <footer>
+                        <button name="set_tmp_location" type="object" string="Continue" class="oe_highlight"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+		<record id="action_mrp_installer" model="ir.actions.act_window">
+            <field name="name">Configure Mrp</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">mrp.installer</field>
+            <field name="view_id" ref="mrp_installer_view_idi"/>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <record id="account_mrp_installer_todo" model="ir.actions.todo">
+            <field name="action_id" ref="action_mrp_installer"/>
+            <field name="sequence">3</field>
+            <field name="type">automatic</field>
+        </record>
+
+    </data>
+</openerp>

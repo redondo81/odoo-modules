@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <!-- Production -->
+
+        <record id="prod_act_scrap" model="workflow.activity">
+            <field name="wkf_id" ref="mrp.wkf_prod"/>
+            <field name="name">scrap_op</field>
+            <field name="kind">function</field>
+            <field name="action">write({'state':'scrap_op'})</field>
+        </record>
+
+        <record id="prod_trans_prod_scrap" model="workflow.transition">
+            <field name="act_from" ref="mrp.prod_act_in_production"/>
+            <field name="act_to" ref="prod_act_scrap"/>
+            <field name="signal">scrap_on</field>
+            <field name="condition">True</field>
+        </record>
+
+
+        <record id="prod_trans_scrap_done" model="workflow.transition">
+            <field name="act_from" ref="prod_act_scrap"/>
+            <field name="act_to" ref="mrp.prod_act_done"/>
+            <field name="signal">button_produce_done</field>
+            <field name="condition">test_production_done()</field>
+        </record>
+
+        <record id="prod_trans_scrap_cancel" model="workflow.transition">
+            <field name="act_from" ref="prod_act_scrap"/>
+            <field name="act_to" ref="mrp.prod_act_cancel"/>
+            <field name="signal">button_cancel</field>
+            <field name="condition">True</field>
+        </record>
+
+         <delete id="mrp.prod_trans_in_production_done" model="workflow.transition"/>
+
+
+    </data>
+</openerp>

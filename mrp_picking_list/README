@@ -1,0 +1,5 @@
+Ricordarsi:
+- sistemare problema relativo ai workflow - devo sistemare l'xml di generazione automatica
+- sistemare creazione automatica del tipo di picking di rientro merce
+- sistemare con i prefissi giusti le sequenze associate ai due tipi di pickinf MRP/IN e MRP/OUT
+- controllare i movimenti sul magazzino

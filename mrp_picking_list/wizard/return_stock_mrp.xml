@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="view_scrap_management_view">
+                <field name="name">scrap.management.view</field>
+                <field name="model">return.stock.mrp</field>
+                <field name="arch" type="xml">
+                    <form string="Gestione scarti e resi">
+                            <field name="mrp_order_id" invisible = "True"/>
+                            <field name="state" invisible = "True"/>
+                            <field name="location_return_id"/>
+                            <field name="return_lines">
+                                <tree string="Products to Return" editable="top" delete="false">
+                                    <field name="product_id" string="Product"/>
+                                    <field name="product_qty" string="Product Quantity"/>
+                                    <field name="product_uom_id"/>
+                                    <field name="return_product_qty" string="Returned Quantity"/>
+                                    <field name="lot_id" groups="stock.group_production_lot" domain="[('product_id','=?', product_id)]" context="{'product_id': product_id}"/>
+                                    <field name="package_id" groups="stock.group_tracking_lot"/>
+                                    <field name="result_package_id" groups="stock.group_tracking_lot"/>
+                                </tree>
+                            </field>
+                    <footer>
+                        <button name="action_return" string="Completa" type="object" class="oe_highlight"/>
+                    </footer>
+                    </form>
+                </field>
+        </record>
+
+    </data>
+</openerp>
